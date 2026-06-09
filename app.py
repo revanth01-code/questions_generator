@@ -17,12 +17,12 @@ question_types = {
 def generate_questions(user_prompt,question_type):
     system_prompt = question_types.get(question_type, "Generate questions from the given content.")
     response = client.models.generate_content(
-        model = "gemini-2.0-flash-lite",
+        model = "gemini-2.5-flash-lite",
         contents = user_prompt,
         config = types.GenerateContentConfig(
-            system_prompt = system_prompt,
+            system_instruction = system_prompt,
             temperature = 0.7,
-            max_output_tokens = 500
+            max_output_tokens = 300
         )
     )
 
